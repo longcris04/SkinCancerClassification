@@ -1,0 +1,36 @@
+{
+    "0":{
+        "0": {
+            "Disease": "Khong_benh",
+            "id": 0,
+            "Vie": "Da không bệnh"
+        },
+        "1": {
+            "Disease": "Ung_thu",
+            "id": 1,
+            "Vie": "Ung thư da"
+        },
+        "2": {
+            "Disease": "Benh_khac",
+            "id": 2,
+            "Vie": "Bệnh da khác"
+        }
+    },
+    "1":{
+        "0": {
+            "Disease": "Day",
+            "id": 0,
+            "Vie": "Ung thư tế bào đáy"
+        },
+        "1": {
+            "Disease": "Vay",
+            "id": 1,
+            "Vie": "Ung thư tế bào vảy"
+        },
+        "2": {
+            "Disease": "Hac_to",
+            "id": 2,
+            "Vie": "Ung thư hắc tố"
+        }
+    }
+}

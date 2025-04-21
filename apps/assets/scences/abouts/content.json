@@ -1,0 +1,12 @@
+[
+    {
+        "avatar" : "assets/images/abouts/Phan Minh Tài.png",
+        "name" : "Phan Minh Tài",
+        "detail" : "Lớp: 11 Lý\nTrường: THPT Chuyên Lương Văn Tụy"
+    },
+    {
+        "avatar" : "assets/images/abouts/Nguyễn Hòa An.png",
+        "name" : "Nguyễn Hòa An",
+        "detail" : "Lớp: 11 Tin\nTrường: THPT Chuyên Lương Văn Tụy"
+    }
+]
