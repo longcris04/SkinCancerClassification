@@ -1,0 +1,77 @@
+[
+    {
+        "title": "",
+        "image": "",
+        "text": "Với sự phát triển nhanh chóng của công nghệ trí tuệ nhân tạo (AI), việc ứng dụng AI trong y học đang tạo ra những bước đột phá quan trọng, đặc biệt trong lĩnh vực hỗ trợ chẩn đoán và điều trị bệnh. Tại Việt Nam, nơi mà các bệnh lý liên quan đến da liễu, đặc biệt là ung thư da, đang ngày càng gia tăng, một hệ thống AI tiên tiến đã được phát triển nhằm hỗ trợ các bác sĩ và cơ sở y tế trong việc sàng lọc và chẩn đoán các bệnh ung thư da. Hệ thống này được thiết kế gồm hai phần chính: hỗ trợ sàng lọc và hỗ trợ chẩn đoán cụ thể."
+    },
+    {
+        "title": "",
+        "image": "assets/images/homes/image1.png",
+        "text": ""
+    },
+    {
+        "title": "1. Hỗ trợ sàng lọc các bệnh liên quan đến ung thư da",
+        "image": "",
+        "text": "Phần sàng lọc của hệ thống AI tập trung vào việc phân tích hình ảnh tổn thương da nhằm phân biệt ba nhóm tình trạng chính:"
+    },
+    {
+        "title": "",
+        "image": "",
+        "text": "- Không bệnh (da bình thường): \nHệ thống nhận diện các tình trạng da bình thường, không có bất kỳ dấu hiệu bất thường nào liên quan đến bệnh lý da liễu. Điều này giúp loại bỏ những trường hợp không cần can thiệp y tế, giảm tải cho các cơ sở y tế trong quá trình sàng lọc ban đầu."
+    },
+    {
+        "title": "",
+        "image": "",
+        "text": "- Bệnh ung thư da: \nHệ thống phát hiện các tổn thương da nghi ngờ ung thư, từ đó đánh dấu các trường hợp cần được chẩn đoán và xử lý sớm. Đây là bước quan trọng nhằm xác định những bệnh nhân có nguy cơ cao để kịp thời chuyển tiếp đến các bác sĩ chuyên khoa."
+    },
+    {
+        "title": "",
+        "image": "",
+        "text": "- Bệnh khác: \nHệ thống phân biệt các tổn thương không phải ung thư da nhưng có thể là các bệnh lý da liễu khác, ví dụ như viêm da, nhiễm trùng da, hoặc các tổn thương lành tính. Nhóm này cũng bao gồm những tình trạng da cần điều trị nhưng không nghiêm trọng như ung thư."
+    },
+    {
+        "title": "",
+        "image": "",
+        "text": "Hệ thống AI sử dụng công nghệ học sâu (deep learning) dựa trên dữ liệu hàng trăm nghìn hình ảnh tổn thương da đã được xác nhận từ các chuyên gia da liễu. Các thuật toán này phân tích màu sắc, hình thái và các đặc điểm khác của tổn thương da để đưa ra kết quả sàng lọc chính xác:"
+    },
+    {
+        "title": "",
+        "image": "",
+        "text": "1. Tiết kiệm thời gian: Giảm bớt thời gian sàng lọc cho các bác sĩ và nhân viên y tế.\n2. Nâng cao độ chính xác: Hạn chế các trường hợp bỏ sót hoặc chẩn đoán nhầm.\n3. Tăng cường tiếp cận y tế: Hỗ trợ các khu vực khó khăn, nơi thiếu nhân lực chuyên môn, bằng cách sử dụng hệ thống AI như một công cụ hỗ trợ từ xa."
+    },
+    {
+        "title": "2. Hỗ trợ chẩn đoán cụ thể các loại ung thư da",
+        "image": "",
+        "text": "Khi hệ thống phát hiện nguy cơ ung thư da, nó sẽ chuyển sang phần chẩn đoán chi tiết nhằm xác định cụ thể loại ung thư da mà bệnh nhân mắc phải. Phần chẩn đoán này tập trung vào ba loại ung thư da phổ biến nhất:"
+    },
+    {
+        "title": "",
+        "image": "",
+        "text": "- Ung thư tế bào đáy (Basal Cell Carcinoma - BCC):\nĐây là loại ung thư da thường gặp nhất, chiếm tỷ lệ cao trong số các ca ung thư da nhưng thường phát triển chậm và ít di căn. Hệ thống AI phân tích các đặc điểm tổn thương điển hình như ranh giới không đều, vùng tổn thương có màu sắc nhạt hoặc bóng. Việc phát hiện sớm loại ung thư này giúp tăng khả năng điều trị thành công với các phương pháp ít xâm lấn."
+    },
+    {
+        "title": "",
+        "image": "",
+        "text": "- Ung thư tế bào vảy (Squamous Cell Carcinoma - SCC):\nLoại ung thư này có mức độ tiến triển nhanh hơn và nguy cơ xâm lấn cao hơn so với ung thư tế bào đáy. Hệ thống AI nhận diện những đặc điểm đặc trưng như tổn thương có vảy, loét, hoặc vùng da dày sừng. Chẩn đoán chính xác loại ung thư này giúp bác sĩ lựa chọn các phương pháp điều trị phù hợp như phẫu thuật hoặc xạ trị."
+    },
+    {
+        "title": "",
+        "image": "",
+        "text": "- Ung thư hắc tố (Melanoma - MEL):\nĐây là loại ung thư da nguy hiểm nhất, có khả năng di căn cao nếu không được điều trị sớm. Hệ thống AI sử dụng các thuật toán chuyên biệt để nhận diện các đặc điểm nghiêm trọng như tổn thương có màu sắc không đồng nhất, đường viền không rõ nét, hoặc sự thay đổi kích thước nhanh chóng của nốt ruồi."
+    },
+    {
+        "title": "",
+        "image": "",
+        "text": "Lợi ích của phần chẩn đoán:"
+    },
+    {
+        "title": "",
+        "image": "",
+        "text": "1. Hỗ trợ bác sĩ chuyên khoa: Cung cấp các thông tin chi tiết để bác sĩ có cơ sở chẩn đoán chính xác hơn.\n2. Tiết kiệm chi phí: Giảm thiểu việc thực hiện các xét nghiệm không cần thiết nhờ vào việc xác định đúng mục tiêu chẩn đoán.\n3. Tăng tỷ lệ sống sót: Phát hiện và điều trị sớm các loại ung thư nguy hiểm như melanoma, từ đó nâng cao cơ hội sống cho bệnh nhân."
+    },
+    {
+        "title": "Kết luận",
+        "image": "",
+        "text": "Hệ thống AI trong hỗ trợ sàng lọc và chẩn đoán ung thư da tại Việt Nam là một giải pháp đột phá, đặc biệt hữu ích trong bối cảnh nguồn lực y tế còn hạn chế. Việc tích hợp hệ thống này vào quy trình khám chữa bệnh không chỉ nâng cao chất lượng chăm sóc sức khỏe mà còn mở rộng khả năng tiếp cận y tế cho cộng đồng, đặc biệt tại các vùng nông thôn và vùng sâu, vùng xa. Trong tương lai, với sự cải tiến không ngừng, hệ thống này hứa hẹn sẽ trở thành công cụ không thể thiếu trong lĩnh vực y tế hiện đại."
+    }
+]
