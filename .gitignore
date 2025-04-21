@@ -1,0 +1,2 @@
+# ignore all checkpoints and tensorboards files inside ./log
+log/
