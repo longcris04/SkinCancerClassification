@@ -14,3 +14,10 @@ slurm*
 # ignore large model files
 apps/models
 apps/models.zip
+
+# ignore script and run_via_slurm
+src/run_via_slurm
+src/script
+
+# ignore pycache
+src/__pycache__
