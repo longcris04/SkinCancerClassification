@@ -7,3 +7,10 @@ apps/data
 
 apps/data.zip
 apps/Dataset.zip
+
+# ignore slurm output and error
+slurm*
+
+# ignore large model files
+apps/models
+apps/models.zip
