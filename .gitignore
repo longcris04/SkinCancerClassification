@@ -1,2 +1,6 @@
 # ignore all checkpoints and tensorboards files inside ./log
 log/
+
+# ignore Dataset
+apps/Dataset/DLTW/
+apps/Dataset/PAD-20/
