@@ -2,5 +2,5 @@
 log/
 
 # ignore Dataset
-apps/Dataset/DLTW/
-apps/Dataset/PAD-20/
+apps/Dataset/
+apps/data
