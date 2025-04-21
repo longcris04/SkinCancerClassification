@@ -4,3 +4,6 @@ log/
 # ignore Dataset
 apps/Dataset/
 apps/data
+
+apps/data.zip
+apps/Dataset.zip
