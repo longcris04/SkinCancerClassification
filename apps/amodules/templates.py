@@ -9,7 +9,7 @@ from utils import *
 from settings import MODEL_NAME_1, SIDEBAR_IMG_PATH
 
 def run_home():
-    st.markdown('<p style="font-size:30px; font-weight:bold;">HỆ THỐNG ỨNG DỤNG TRÍ TUỆ NHÂN TẠO TRONG HỖ TRỢ SÀNG LỌC, CHẨN ĐOÁN MỘT SỐ BỆNH UNG THƯ DA TẠI VIỆT NAM</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:30px; font-weight:bold;">AI SYSTEM FOR SUPPORTING SCREENING AND DIAGNOSIS OF SKIN CANCER IN VIETNAM</p>', unsafe_allow_html=True)
 
     for item in home_data:
         if item['title'] != "":
@@ -26,10 +26,10 @@ def run_home():
             st.write(item['text'])
 
 def run_overview():
-    st.markdown('<p style="font-size:30px; font-weight:bold;">DỮ LIỆU VÀ MÔ HÌNH</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:30px; font-weight:bold;">DATA AND MODELS</p>', unsafe_allow_html=True)
     selected = option_menu(
         menu_title=None,
-        options=['Dữ liệu', 'Mô hình'],
+        options=['Data', 'Models'],
         icons=['database', 'robot'],
         styles={
             "nav-link": {"font-size": "18px", "font-family": "'Source Sans Pro', sans-serif", "font-weight": "400", "font-style": "normal"},
@@ -37,16 +37,16 @@ def run_overview():
         },
         orientation='horizontal'
     )
-    if selected == "Dữ liệu":
+    if selected == "Data":
         labels = {
-            'DLTW': 'Da liễu trung ương',
+            'DLTW': 'Central Dermatology',
             'PAD-20': 'PAD-20',
-            'Khong_benh': 'Da không bệnh',
-            'Ung_thu': 'Ung thư da',
-            'Benh_khac': 'Bệnh da khác',
-            'Day': 'Ung thư tế bào đáy',
-            'Vay': 'Ung thư tế bào vảy',
-            'Hac_to': 'Ung thư hắc tố',
+            'No_disease': 'Healthy Skin',
+            'Skin_cancer': 'Skin Cancer',
+            'Other_disease': 'Other Skin Disease',
+            'Rash': 'Basal Cell Carcinoma',
+            'Psoriasis': 'Squamous Cell Carcinoma',
+            'Melanoma': 'Melanoma',
         }
         
         def load_and_display_images(path, name,cols=3):
@@ -54,7 +54,7 @@ def run_overview():
             Load and display images from the specified path in a grid layout
             """
             if not os.path.exists(path):
-                st.error(f"Đường dẫn {path} không tồn tại")
+                st.error(f"The path {path} does not exist")
                 return
 
             # Get all image files
@@ -72,12 +72,12 @@ def run_overview():
                             image = image.resize((300, 300))
                             st.image(image, caption=name, use_container_width=True)
                         except Exception as e:
-                            st.error(f"Lỗi khi tải ảnh '{image_file}': {e}")
+                            st.error(f"Error loading image '{image_file}': {e}")
         
         
         # Dataset selection
         dataset = st.selectbox(
-            "Chọn Dataset",
+            "Select Dataset",
             options=["DLTW", "PAD-20"],
             format_func=lambda x: labels[x]
         )
@@ -85,48 +85,48 @@ def run_overview():
         # First level categories based on dataset
         if dataset == "DLTW":
             first_level = st.selectbox(
-                "Chọn loại",
-                options=["Khong_benh", "Ung_thu"],
+                "Select Type",
+                options=["No_disease", "Skin_cancer"],
                 format_func=lambda x: labels[x]
             )
             
-            # Second level for Ung_thu
-            if first_level == "Ung_thu":
+            # Second level for Skin_cancer
+            if first_level == "Skin_cancer":
                 second_level = st.selectbox(
-                    "Chọn loại ung thư",
-                    options=["Day", "Vay", "Hac_to"],
+                    "Select Cancer Type",
+                    options=["Rash", "Psoriasis", "Melanoma"],
                     format_func=lambda x: labels[x]
                 )
                 # Display images for the selected cancer type
-                image_path = os.path.join("dataset", dataset, "train/Ung_thu", second_level)
+                image_path = os.path.join("dataset", dataset, "train/Skin_cancer", second_level)
                 load_and_display_images(image_path, labels[second_level])
             else:
-                # Display images for Khong_benh
+                # Display images for No_disease
                 image_path = os.path.join("dataset", dataset, "train", first_level)
                 load_and_display_images(image_path, labels[first_level])
                 
         else:  # PAD-20
             category = st.selectbox(
-                "Chọn loại",
-                options=["Benh_khac", "Ung_thu"],
+                "Select Type",
+                options=["Other_disease", "Skin_cancer"],
                 format_func=lambda x: labels[x]
             )
             
-            if category == "Ung_thu":
+            if category == "Skin_cancer":
                 cancer_type = st.selectbox(
-                    "Chọn loại ung thư",
-                    options=["Day", "Vay", "Hac_to"],
+                    "Select Cancer Type",
+                    options=["Rash", "Psoriasis", "Melanoma"],
                     format_func=lambda x: labels[x]
                 )
-                image_path = os.path.join("dataset", dataset, "train/Ung_thu", cancer_type)
+                image_path = os.path.join("dataset", dataset, "train/Skin_cancer", cancer_type)
                 load_and_display_images(image_path, labels[cancer_type])
             else:
                 image_path = os.path.join("dataset", dataset, "train", category)
                 load_and_display_images(image_path, labels[category])
 
 
-    elif selected == "Mô hình":
-        st.markdown('<p style="font-size:25px; font-weight:bold;">Mô hình hỗ trợ sàng lọc bệnh ung thư</p>', unsafe_allow_html=True)
+    elif selected == "Models":
+        st.markdown('<p style="font-size:25px; font-weight:bold;">Skin Cancer Screening Models</p>', unsafe_allow_html=True)
         items = get_sub_list(colabs_data, [0,1,2,3,4,5])
         # Display each item as a form with text and a hyperlink
         for idx, item in enumerate(items):
@@ -137,7 +137,7 @@ def run_overview():
                 if submitted:
                     streamlit_js_eval(js_expressions=f'window.open("{item["link"]}", "_blank");', key=f"blog_js_eval_{idx}_1")
 
-        st.markdown('<p style="font-size:25px; font-weight:bold;">Mô hình phân biệt các bệnh ung thư</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:25px; font-weight:bold;">Models for Differentiating Skin Cancer Types</p>', unsafe_allow_html=True)
         items = get_sub_list(colabs_data, [6,7])
         # Display each item as a form with text and a hyperlink
         for idx, item in enumerate(items):
@@ -149,21 +149,21 @@ def run_overview():
                     streamlit_js_eval(js_expressions=f'window.open("{item["link"]}", "_blank");', key=f"blog_js_eval_{idx}_2")
 
 def run_blogs():
-    st.markdown('<p style="font-size:30px; font-weight:bold;">TÀI LIỆU TÌM HIỂU VỀ UNG THƯ DA VÀ CÁC BỆNH KHÁC</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:30px; font-weight:bold;">RESOURCES ON SKIN CANCER AND OTHER DISEASES</p>', unsafe_allow_html=True)
     # Display each item as a form with text and a hyperlink
     for idx, item in enumerate(blogs_data):
         with st.form(key=f"blog_form_{idx}_1"):
             st.markdown(f"### {item['name']}")
-            st.markdown(f'<p style="font-size:16px; font-style:italic; color: #6a6a6a">Nguồn: {item["source"]}</p>', unsafe_allow_html=True)
-            submitted = st.form_submit_button("Tìm hiểu", )
+            st.markdown(f'<p style="font-size:16px; font-style:italic; color: #6a6a6a">Source: {item["source"]}</p>', unsafe_allow_html=True)
+            submitted = st.form_submit_button("Learn More", )
             if submitted:
                 streamlit_js_eval(js_expressions=f'window.open("{item["link"]}", "_blank");', key=f"blog_js_eval_{idx}_1")
 
 def run_prediction():
-    st.markdown('<p style="font-size:30px; font-weight:bold;">HỖ TRỢ SÀNG LỌC</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:30px; font-weight:bold;">SCREENING SUPPORT</p>', unsafe_allow_html=True)
     selected = option_menu(
         menu_title=None,
-        options=['Sử dụng', 'Hướng dẫn sử dụng'],
+        options=['Use', 'User Guide'],
         icons=['card-image', 'blockquote-left'],
         styles={
             "nav-link": {"font-size": "18px", "font-family": "'Source Sans Pro', sans-serif", "font-weight": "400", "font-style": "normal"},
@@ -172,13 +172,13 @@ def run_prediction():
         orientation='horizontal'
     )
 
-    if selected == "Sử dụng":
-        uploaded_file = st.file_uploader("Chọn ảnh để chẩn đoán", type=['png', 'jpg', 'jpeg'])
+    if selected == "Use":
+        uploaded_file = st.file_uploader("Select an Image for Diagnosis", type=['png', 'jpg', 'jpeg'])
         
         if uploaded_file is not None:
             image = Image.open(uploaded_file).convert('RGB')
             image = image.resize((300,300))
-            st.image(image, caption='Ảnh đã tải lên', use_container_width=True)
+            st.image(image, caption='Uploaded Image', use_container_width=True)
 
         if 'cancer' not in st.session_state:
             st.session_state['cancer'] = False
@@ -187,7 +187,7 @@ def run_prediction():
             st.session_state['cancer'] = False
 
         # Create both buttons at the same level
-        diagnose_button = st.button('Sàng lọc', disabled=uploaded_file is None)
+        diagnose_button = st.button('Screen', disabled=uploaded_file is None)
 
         if diagnose_button:
             if uploaded_file is not None:                
@@ -197,14 +197,14 @@ def run_prediction():
                     st.write(final_str)
                     for i in detail_str:
                         st.write(f"- {i}%")
-                    if response['Disease'] not in ['Khong_benh','Benh_khac']:
+                    if response['Disease'] not in ['No_disease', 'Other_disease']:
                         st.session_state['cancer'] = True
                 except:
-                    st.write(f"Xảy ra lỗi.")
+                    st.write(f"An error occurred.")
 
         # Separate if condition for cancer_button
         if st.session_state['cancer']:
-            cancer_button = st.button('Chẩn đoán', disabled=uploaded_file is None)
+            cancer_button = st.button('Diagnose', disabled=uploaded_file is None)
             if cancer_button:
                 if uploaded_file is not None:
                     response = send_request_2(image, MODEL_NAME_2) 
@@ -214,67 +214,67 @@ def run_prediction():
                         for i in detail_str:
                             st.write(f"- {i}%.")
                     except:
-                        st.write(f"Xảy ra lỗi.")
-    elif selected == "Hướng dẫn sử dụng":
-        # Nội dung hướng dẫn
+                        st.write(f"An error occurred.")
+    elif selected == "User Guide":
+        # Guide content
         st.write("""
-        Tính năng **Hỗ trợ sàng lọc** giúp bạn phân tích ảnh da để đưa ra dự đoán về nguy cơ mắc các bệnh liên quan đến da, đặc biệt là ung thư da.
-        Vui lòng làm theo các bước sau:
+        The **Screening Support** feature helps you analyze skin images to predict the risk of skin-related diseases, particularly skin cancer.
+        Please follow the steps below:
         """)
         
-        # Các bước sử dụng
+        # Usage steps
         st.markdown("""
-        ### **1. Tải ảnh lên**
-        - Nhấn vào **"Chọn ảnh để chẩn đoán"** để tải ảnh da cần phân tích từ máy tính.
-        - Hỗ trợ các định dạng: `png`, `jpg`, `jpeg`.
-        - Sau khi tải ảnh, giao diện sẽ hiển thị hình ảnh bạn vừa chọn để xác nhận.
-        """)
-        
-        st.markdown("""
-        ### **2. Nhấn nút Sàng lọc**
-        - Sau khi ảnh được tải lên, nhấn vào nút **"Sàng lọc"** để bắt đầu phân tích.
-        - Hình ảnh sẽ được gửi lên máy chủ để xử lý và đưa ra dự đoán ban đầu.
+        ### **1. Upload an Image**
+        - Click on **"Select an Image for Diagnosis"** to upload a skin image from your computer.
+        - Supported formats: `png`, `jpg`, `jpeg`.
+        - After uploading, the interface will display the selected image for confirmation.
         """)
         
         st.markdown("""
-        ### **3. Đầu ra dự đoán ban đầu**
-        Dự đoán sẽ có định dạng như sau:
+        ### **2. Click the Screen Button**
+        - Once the image is uploaded, click the **"Screen"** button to start the analysis.
+        - The image will be sent to the server for processing and initial prediction.
+        """)
+        
+        st.markdown("""
+        ### **3. Initial Prediction Output**
+        The prediction will be displayed in the following format:
         ```plaintext
-        Ảnh da của bạn có nguy cơ mắc bệnh ung thư da.
-        - Da không bệnh: 0.0%
-        - Ung thư da: 94.2%
-        - Bệnh da khác: 5.8%
+        Your skin image indicates a risk of skin cancer.
+        - Healthy Skin: 0.0%
+        - Skin Cancer: 94.2%
+        - Other Skin Disease: 5.8%
         ```
-        - Ví dụ trên cho thấy hình ảnh có khả năng mắc **bệnh ung thư da** với độ tự tin là **94.2%**.
+        - The example above indicates a **skin cancer** risk with a confidence level of **94.2%**.
         """)
 
         st.markdown("""
-        ### **4. Hiển thị nút Chẩn đoán (nếu cần)**
-        - Nếu dự đoán xác định nguy cơ **ung thư da**, giao diện sẽ hiển thị nút **"Chẩn đoán"**.
-        - Nhấn vào nút này để gửi hình ảnh lên máy chủ một lần nữa nhằm thực hiện phân tích chuyên sâu.
+        ### **4. Display the Diagnose Button (if applicable)**
+        - If the prediction indicates a risk of **skin cancer**, the interface will display a **"Diagnose"** button.
+        - Click this button to send the image to the server again for a more detailed analysis.
         """)
 
         st.markdown("""
-        ### **5. Đầu ra dự đoán chi tiết**
-        Sau khi nhấn nút **Chẩn đoán**, kết quả chi tiết sẽ hiển thị như sau:
+        ### **5. Detailed Prediction Output**
+        After clicking the **Diagnose** button, the detailed result will be displayed as follows:
         ```plaintext
-        Ảnh da của bạn có nguy cơ mắc bệnh Ung thư tế bào đáy.
-        - Ung thư tế bào đáy: 80.2%.
-        - Ung thư tế bào vảy: 19.72%.
-        - Ung thư hắc tố: 0.09%.
+        Your skin image indicates a risk of Basal Cell Carcinoma.
+        - Basal Cell Carcinoma: 80.2%.
+        - Squamous Cell Carcinoma: 19.72%.
+        - Melanoma: 0.09%.
         ```
-        - Dự đoán trên cho biết hình ảnh có khả năng mắc bệnh **ung thư tế bào đáy** với độ tự tin là **80.2%**.
+        - The prediction above indicates a risk of **Basal Cell Carcinoma** with a confidence level of **80.2%**.
         """)
 
         st.markdown("""
-        ### **Lưu ý quan trọng**
-        - **Chất lượng ảnh**: Đảm bảo hình ảnh rõ nét và thể hiện đầy đủ vùng da cần phân tích.
-        - **Kết quả dự đoán**: Đây chỉ là công cụ hỗ trợ và không thay thế cho chẩn đoán y khoa. 
-        Vui lòng tham khảo ý kiến bác sĩ chuyên môn để được tư vấn cụ thể.
+        ### **Important Notes**
+        - **Image Quality**: Ensure the image is clear and fully captures the skin area to be analyzed.
+        - **Prediction Results**: This is only a support tool and does not replace a medical diagnosis. 
+        Please consult a specialist doctor for specific advice.
         """)
 
 def run_abouts():
-    st.markdown('<p style="font-size:30px; font-weight:bold;">VỀ CHÚNG TÔI</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:30px; font-weight:bold;">ABOUT US</p>', unsafe_allow_html=True)
 
     for item in abouts_data:        
         col1, col2 = st.columns([1, 3])
@@ -285,7 +285,7 @@ def run_abouts():
                 image = image.resize((300,300))
                 st.image(image, use_container_width =True)
             except Exception as e:
-                st.error(f"Lỗi khi tải ảnh '{item['avatar']}': {e}")
+                st.error(f"Error loading image '{item['avatar']}': {e}")
         
         with col2:
             # Show the name as a prefilled, non-editable text
@@ -293,7 +293,7 @@ def run_abouts():
             st.text(item['detail'])
 
 def run_accounts():
-    st.markdown('<p style="font-size:30px; font-weight:bold;">QUYỀN TRUY CẬP</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:30px; font-weight:bold;">ACCESS PERMISSIONS</p>', unsafe_allow_html=True)
     selected = option_menu(
         menu_title=None,
         options=['Add', 'Modify'],
@@ -314,9 +314,9 @@ def run_accounts():
         
             if signup_clicked:
                 if add_account(username, name, role, password):
-                    st.success("Thêm thành công")
+                    st.success("Added successfully")
                 else:
-                    st.error("Đã xảy ra lỗi")
+                    st.error("An error occurred")
     if selected == "Modify":
         list_username, list_names, list_roles, _, list_password, _, _, _, _ = load_accounts()
         list_username.append("none")
@@ -334,9 +334,9 @@ def run_accounts():
             
                 if modify_clicked:
                     if update_account(selected_username, name, role, password):
-                        st.success("Thay đổi thành công")
+                        st.success("Modified successfully")
                     else:
-                        st.error("Đã xảy ra lỗi")
+                        st.error("An error occurred")
 
 def run_page(role="admin"):
     if role.lower() == "user":
@@ -345,7 +345,7 @@ def run_page(role="admin"):
             st.image(image, use_container_width=True)
             selected = option_menu(
                 menu_title=None,
-                options=['Trang chủ', 'Dữ liệu và Mô hình', 'Blogs', 'Hỗ trợ sàng lọc, chẩn đoán', 'Về chúng tôi'],
+                options=['Home', 'Data and Models', 'Blogs', 'Screening and Diagnosis Support', 'About Us'],
                 icons=['house-fill', 'bar-chart-line-fill', 'file-earmark-richtext-fill', 'aspect-ratio-fill', 'award-fill'],
                 styles={
                     "nav-link": {"font-size": "18px", "font-family": "'Source Sans Pro', sans-serif", "font-weight": "400", "font-style": "normal"},
@@ -358,7 +358,7 @@ def run_page(role="admin"):
             st.image(image, use_container_width=True)
             selected = option_menu(
                 menu_title=None,
-                options=['Trang chủ', 'Dữ liệu và Mô hình', 'Blogs', 'Hỗ trợ sàng lọc, chẩn đoán', 'Về chúng tôi', "Tài khoản"],
+                options=['Home', 'Data and Models', 'Blogs', 'Screening and Diagnosis Support', 'About Us', "Accounts"],
                 icons=['house-fill', 'bar-chart-line-fill', 'file-earmark-richtext-fill', 'aspect-ratio-fill', 'award-fill', "people-fill"],
                 styles={
                     "nav-link": {"font-size": "18px", "font-family": "'Source Sans Pro', sans-serif", "font-weight": "400", "font-style": "normal"},
@@ -367,16 +367,16 @@ def run_page(role="admin"):
                 )
     
 
-    if selected == "Trang chủ":
+    if selected == "Home":
         run_home()
-    if selected == "Dữ liệu và Mô hình":
+    if selected == "Data and Models":
         run_overview()
     if selected == "Blogs":
         run_blogs()
-    if selected == "Hỗ trợ sàng lọc, chẩn đoán":
+    if selected == "Screening and Diagnosis Support":
         run_prediction()
-    if selected == "Về chúng tôi":
+    if selected == "About Us":
         run_abouts()
-    if selected == "Tài khoản":
+    if selected == "Accounts":
         run_accounts()
 

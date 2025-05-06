@@ -180,7 +180,7 @@ def get_description(result, type):
                 if disease["Disease"] == key: 
                     detail_strings.append(f"{disease['Vie']}: {round(value*100, 2)}")
 
-        final_string = f"Ảnh da của bạn có nguy cơ mắc bệnh {detected_disease_vie}."
+        final_string = f"Your skin image indicates a risk of {detected_disease_vie}."
         return final_string, detail_strings
     else:
         detected_disease_vie = None 
@@ -195,12 +195,12 @@ def get_description(result, type):
                     detail_strings.append(f"{disease['Vie']}: {round(value*100, 2)}")
 
         final_string = ""
-        if result["Disease"] == "Khong_benh": 
-            final_string = "Ảnh da của bạn không có bệnh." 
-        if result["Disease"] == "Ung_thu": 
-            final_string = "Ảnh da của bạn có nguy cơ mắc bệnh ung thư da." 
+        if result["Disease"] == "No_disease": 
+            final_string = "Your skin image shows no signs of disease." 
+        if result["Disease"] == "Skin_cancer": 
+            final_string = "Your skin image indicates a risk of skin cancer." 
         else: 
-            final_string = "Ảnh da của bạn có nguy cơ mắc bệnh da khác."
+            final_string = "Your skin image indicates a risk of another skin disease."
         return final_string, detail_strings
     
 def get_sub_dict(main_dict, sub_keys):
@@ -228,9 +228,9 @@ def m_infer(image_link: str,
                 "Disease": labels_data['1'][str(predicted.argmax().item())]['Disease'],
                 "Score": predicted.max().item(),
                 "Detail":{
-                    "Day": predicted[0].item(),
-                    "Vay": predicted[1].item(),
-                    "Hac_to": predicted[2].item()
+                    "Rash": predicted[0].item(),
+                    "Psoriasis": predicted[1].item(),
+                    "Melanoma": predicted[2].item()
                 }
             }
         # return JSONResponse(result)
@@ -240,9 +240,9 @@ def m_infer(image_link: str,
             "Disease": labels_data['0'][str(predicted.argmax().item())]['Disease'],
             "Score": predicted.max().item(),
             "Detail":{
-                "Khong_benh": predicted[0].item(),
-                "Ung_thu": predicted[1].item(),
-                "Benh_khac": predicted[2].item()
+                "No_disease": predicted[0].item(),
+                "Skin_cancer": predicted[1].item(),
+                "Other_disease": predicted[2].item()
             }
         }
         # return JSONResponse(result)
@@ -263,9 +263,9 @@ def infer_1(image_link: str,
         "Disease": labels_data['0'][str(predicted.argmax().item())]['Disease'],
         "Score": predicted.max().item(),
         "Detail":{
-            "Khong_benh": predicted[0].item(),
-            "Ung_thu": predicted[1].item(),
-            "Benh_khac": predicted[2].item()
+            "No_disease": predicted[0].item(),
+            "Skin_cancer": predicted[1].item(),
+            "Other_disease": predicted[2].item()
         }
     }
     return result
@@ -285,9 +285,9 @@ def infer_2(image_link: str,
             "Disease": labels_data['1'][str(predicted.argmax().item())]['Disease'],
             "Score": predicted.max().item(),
             "Detail":{
-                "Day": predicted[0].item(),
-                "Vay": predicted[1].item(),
-                "Hac_to": predicted[2].item()
+                "Rash": predicted[0].item(),
+                "Psoriasis": predicted[1].item(),
+                "Melanoma": predicted[2].item()
             }
         }
     return result
@@ -341,6 +341,6 @@ def send_request_2(image, model_name):
     return response.json()
 
 if __name__ == "__main__":
-    # add_account("user2", "Người dùng 2", "User", "123")
-    # update_account("user2", "Người dùng 2", "User", "137")
-    add_account("user3", "Người dùng 3", "User", "137")
+    # add_account("user2", "User 2", "User", "123")
+    # update_account("user2", "User 2", "User", "137")
+    add_account("user3", "User 3", "User", "137")

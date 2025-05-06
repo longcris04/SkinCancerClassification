@@ -1,36 +1,36 @@
 {
     "0":{
         "0": {
-            "Disease": "Khong_benh",
+            "Disease": "No_disease",
             "id": 0,
-            "Vie": "Da không bệnh"
+            "Vie": "Healthy Skin"
         },
         "1": {
-            "Disease": "Ung_thu",
+            "Disease": "Skin_cancer",
             "id": 1,
-            "Vie": "Ung thư da"
+            "Vie": "Skin Cancer"
         },
         "2": {
-            "Disease": "Benh_khac",
+            "Disease": "Other_disease",
             "id": 2,
-            "Vie": "Bệnh da khác"
+            "Vie": "Other Skin Disease"
         }
     },
     "1":{
         "0": {
-            "Disease": "Day",
+            "Disease": "Rash",
             "id": 0,
-            "Vie": "Ung thư tế bào đáy"
+            "Vie": "Basal Cell Carcinoma"
         },
         "1": {
-            "Disease": "Vay",
+            "Disease": "Psoriasis",
             "id": 1,
-            "Vie": "Ung thư tế bào vảy"
+            "Vie": "Squamous Cell Carcinoma"
         },
         "2": {
-            "Disease": "Hac_to",
+            "Disease": "Melanoma",
             "id": 2,
-            "Vie": "Ung thư hắc tố"
+            "Vie": "Melanoma"
         }
     }
 }

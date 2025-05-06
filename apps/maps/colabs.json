@@ -6,5 +6,5 @@
     {"name": "Efficientnet V2-m", "note":"", "link": "https://colab.research.google.com/drive/1SQ6S-2AgDnWX7r2E_4YBRF8JibI4VXcB?usp=sharing"},
     {"name": "Efficientnet V2-l", "note":"", "link": "https://colab.research.google.com/drive/1EMvayp5CSzIJ_pGXJfl9USWgDCHEL3ch?usp=sharing"},
     {"name": "Efficientnet V2-s", "note":"", "link": "https://colab.research.google.com/drive/1YOxmq3eGyVRGX3iLMDZewGnRfDda_b0e?usp=sharing"},
-    {"name": "Resnet50", "note":"*Chỉ huấn luyện trên dữ liệu PAD-20", "link": "https://colab.research.google.com/drive/18g-FQN0DdObndHyLIpBvQJrpvx4qr9mC?usp=sharing"}
+    {"name": "Resnet50", "note":"*Trained only on PAD-20 dataset", "link": "https://colab.research.google.com/drive/18g-FQN0DdObndHyLIpBvQJrpvx4qr9mC?usp=sharing"}
 ]
